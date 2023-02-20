@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek Stunting</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light shadow-dark rounded-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img height="50px" src="assets/ykp-logo.png" alt="">
+                </a>
+                <div class="col">
+                    <h5 class="mb-0">Deteksi <span>Stunting</span></h5>
+                    <h5 class="mb-0">Sejak Dini</h5>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse"  id="navbarNav">
+                    <div class="navbar-nav ms-lg-auto">
+                        <a class="nav-link" href="index.html">Beranda</a>
+                        <a class="nav-link" href="artikel.html">Artikel</a>
+                        <a class="nav-link active" href="cek-stunting.html">Cek Stunting</a>
+                        <a class="nav-link" href="kontak.html">Kontak</a>
+                        <a class="nav-link" href="tentang.html">Tentang</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="content-cek-stunting container-fluid">
+            <div class="row shadow-dark content-kalkulator">
+                <div class="col d-flex align-items-center">
+                    <img class="mx-auto d-block decoration-stunting" src="assets/undraw_toy_car_-7-umw.svg" alt="img background">
+                    
+                </div>
+                <div class="col">
+                    <h1 class="mt-2">Cek <span>Stunting</span> Online</h1>
+                    <h4 class="sub-judul"><span>Cegah</span> sebelum menjadi <span>masalah</span>!</h4>
+                    <form class="row">
+                        <div class="row">
+                            <div>
+                                <h3>Nama Anak</h3>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h3>Jenis Kelamin</h3>
+                                <select class="form-select">
+                                    <option value="Laki-Laki">Laki-Laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <h3>Tanggal Lahir</h3>
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h3>Berat Badan</h3>
+                                <input type="number" class="form-control">
+                            </div>
+                            <div class="col">
+                                <h3>Tinggi Badan</h3>
+                                <input type="number" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row d-grid my-3">
+                            <button type="submit" class="btn btn-danger "> Cek Hasil </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col d-flex align-items-center">
+                    <img class="mx-auto d-block decoration-stunting" src="assets/undraw_fatherhood_-7-i19.svg" alt="img background">
+                </div>
+            </div>
+        </div>
+        <div class=" shadow-dark my-4 py-3 content-kalkulator container-fluid">
+            <div class="row">
+                <h1 class="col mb-4">Hasil <span>Cek Stunting</span></h1>
+            </div>
+            <div class="row">
+                <div class="col sub-hasil">
+                    <h2>Indikasi</h2>
+                    <div class="row">
+                        <div class="col-4">Nama Anak</div>
+                        <div class="col-6 border-input">Luffy</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Jenis Kelamin</div>
+                        <div class="col-6 border-input">Laki-Laki</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Umur</div>
+                        <div class="col-6 border-input">1 bulan <span>(0 tahun 1 bulan 0 hari)</span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Berat Badan</div>
+                        <div class="col-6 border-input">4.3 kg <span>(Normal)</span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Tinggi Badan</div>
+                        <div class="col-6 border-input">54.7 cm <span>(Normal)</span></div>
+                    </div>
+                </div>
+                <div class="col-md-6 sub-hasil">
+                    <h2>Anjuran Cakupan Gizi dan Nutrisi</h2>
+                    <div class="row">
+                        <ul class="list-gizi">
+                            <li>Item pertama</li>
+                            <li>Item kedua</li>
+                            <li>Item ketiga</li>
+                          </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-dark pt-3 pb-1 mt-4">
+        <div class="container text-center">
+            <p class="text-light">&copy; D3 RMIK 2023 <br> All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
