@@ -1,0 +1,127 @@
+
+:root {
+    --primer : #db4237;
+}
+
+/* Halaman Beranda */
+.nav-link.active{
+    color: var(--primer) !important;
+}
+
+.decoration{
+    height: 350px;
+    width: auto;
+}
+
+div.col span, h1.col span{
+    color: var(--primer);
+}
+
+.shadow-dark {
+    box-shadow: 3px 6px 15px rgba(0, 0, 0, 0.6) !important;
+
+}
+
+.isi{
+    border-radius: 2em;
+    padding: 1.3em 0;
+}
+
+.isi-1{
+    margin-top: 6em;
+}
+
+/* Halaman Utama Artikel */
+
+div.judul-utama-artikel h1, div h1 span{
+    color: var(--primer);
+}
+
+.content-artikel{
+    margin-top: 6em;
+
+}
+
+.artikel{
+    border-radius: 2em;
+    border: .2em solid var(--primer);
+}
+
+a.artikel{
+    text-decoration: none;
+    display: block;
+    color: black;
+}
+
+/* Halaman Cek Stunting */
+
+.content-cek-stunting{
+    margin-top: 6em;
+
+}
+
+.sub-judul{
+    margin-top: -.5em;
+    margin-bottom: 1em;
+}
+
+.row div h3{
+    font-size: 20px;
+}
+
+.content-kalkulator{
+    border-radius: 2em;   
+}
+
+.decoration-stunting{
+    height: 200px;
+    width: auto;
+}
+
+.border-input{
+    border: 2px solid black;
+    border-radius: 5px;
+    margin-bottom: .5em;
+}
+
+.sub-hasil h2{
+    color: var(--primer);
+}
+
+ul {
+    list-style-type: disc;
+  }
+
+  ul.list-gizi li{
+    font-size: 1.2em;
+  }
+
+  span#ageMonth, span#hasil_berat_badan, span#hasil_tinggi_badan{
+    color: black;
+  }
+  
+
+/* Halaman Tentang */
+
+.judul-tentang, .judul-kontak{
+    margin-top: 3em;
+}
+
+/* Halaman Kontak */
+div.card{
+    margin-top: 2em;
+}
+
+/* Halaman Artikel Satuan */
+.artikel-satuan{
+    margin-top: 8em;
+}
+
+.artikel-satuan-isi{
+    padding-top: 2em;
+}
+
+a.card-body{
+    text-decoration: none;
+    color: black;
+}

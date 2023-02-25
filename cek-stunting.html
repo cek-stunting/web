@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cek Stunting</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light shadow-dark rounded-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img height="50px" src="assets/ykp-logo.png" alt="">
+                </a>
+                <div class="col">
+                    <h5 class="mb-0">Deteksi <span>Stunting</span></h5>
+                    <h5 class="mb-0">Sejak Dini</h5>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse"  id="navbarNav">
+                    <div class="navbar-nav ms-lg-auto">
+                        <a class="nav-link" href="index.html">Beranda</a>
+                        <a class="nav-link" href="artikel.html">Artikel</a>
+                        <a class="nav-link active" href="cek-stunting.html">Cek Stunting</a>
+                        <a class="nav-link" href="kontak.html">Kontak</a>
+                        <a class="nav-link" href="tentang.html">Tentang</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="content-cek-stunting container-fluid">
+            <div class="row shadow-dark content-kalkulator">
+                <div class="col d-flex align-items-center">
+                    <img class="mx-auto d-block decoration-stunting" src="assets/undraw_toy_car_-7-umw.svg" alt="img background">
+                    
+                </div>
+                <div class="col">
+                    <h1 class="mt-2">Cek <span>Stunting</span> Online</h1>
+                    <h4 class="sub-judul"><span>Cegah</span> sebelum menjadi <span>masalah</span>!</h4>
+                        <div class="row">
+                            <div>
+                                <h3>Nama Anak</h3>
+                                <input id="nama" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h3>Jenis Kelamin</h3>
+                                <select id="jk" class="form-select">
+                                    <option value="Laki-Laki">Laki-Laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <h3>Tanggal Lahir</h3>
+                                <input id="tgl" type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <h3>Berat Badan</h3>
+                                <input id="berat_badan" type="number" class="form-control">
+                            </div>
+                            <div class="col">
+                                <h3>Tinggi Badan</h3>
+                                <input id="tinggi_badan" type="number" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row d-grid my-3">
+                            <button onclick="pecahTanggal()" class="btn btn-danger "> Cek Hasil </button>
+                        </div>
+                </div>
+                <div class="col d-flex align-items-center">
+                    <img class="mx-auto d-block decoration-stunting" src="assets/undraw_fatherhood_-7-i19.svg" alt="img background">
+                </div>
+            </div>
+        </div>
+        <div class=" shadow-dark my-4 py-3 content-kalkulator container-fluid">
+            <div class="row">
+                <h1 class="col mb-4">Hasil <span>Cek Stunting</span></h1>
+            </div>
+            <div class="row">
+                <div class="col sub-hasil">
+                    <h2>Indikasi</h2>
+                    <div class="row">
+                        <div class="col-4">Nama Anak</div>
+                        <div id="hasil_nama" class="col-6 border-input">-</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Jenis Kelamin</div>
+                        <div id="hasil_jk" class="col-6 border-input">-</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Umur</div>
+                        <div class="col-6 border-input"><span id="ageMonth">-</span> <span id="age"></span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Berat Badan</div>
+                        <div class="col-6 border-input"><span id="hasil_berat_badan">- </span><span id="normal_a">(-)</span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">Berat Badan</div>
+                        <div class="col-6 border-input"><span id="hasil_tinggi_badan">- </span><span id="normal_b">(-)</span></div>
+                    </div>
+                </div>
+                <div class="col-md-6 sub-hasil">
+                    <h2>Anjuran Cakupan Gizi dan Nutrisi</h2>
+                    <div class="row">
+                        <ul class=" mx-3 mx-md-auto list-gizi">
+                            <li>Item pertama</li>
+                            <li>Item kedua</li>
+                            <li>Item ketiga</li>
+                          </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-dark pt-3 pb-1 mt-4">
+        <div class="container text-center">
+            <p class="text-light">&copy; D3 RMIK 2023 <br> All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        function pecahTanggal() {
+          // Ambil nilai tanggal dari input
+          let tanggal = new Date(document.getElementById("tgl").value);
+    
+          // Pecah tanggal menjadi tahun, bulan, dan hari
+          let y1 = tanggal.getFullYear();
+          let m1 = tanggal.getMonth() + 1;
+          let d1 = tanggal.getDate();
+          
+    var dateNow = new Date();
+      var d2 = dateNow.getDate();
+      var m2 = 1 + dateNow.getMonth();
+      var y2 = dateNow.getFullYear();
+      var month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    
+      if(d1 > d2){
+          d2 = d2 + month[m2 - 1];
+          m2 = m2 - 1;
+      }
+      if(m1 > m2){
+          m2 = m2 + 12;
+          y2 = y2 - 1;
+      }
+      var d = d2 - d1;
+      var m = m2 - m1;
+      var y = y2 - y1;
+      
+    let age =document.getElementById('age');
+    age.innerHTML = '( '+y+' Tahun '+m+' Bulan '+d+' Hari ) ';
+      
+      if (y == 0 && m == 0 && d >= 16 ) {
+            m = 1;
+          }
+          
+       var totalBulan = Number((y * 12) + m);
+
+    //menampilkan rincian umur
+    let ageMonth = document.getElementById('ageMonth');
+    ageMonth.innerHTML = totalBulan+' Bulan';
+
+    // data diri
+    let nama = document.getElementById('nama').value;
+    let jk = document.getElementById('jk').value;
+    let berat_badan = Number(document.getElementById('berat_badan').value);
+    let tinggi_badan = Number(document.getElementById('tinggi_badan').value);
+
+    // menampilkan data diri
+    document.getElementById('hasil_nama').innerHTML = nama;
+    document.getElementById('hasil_jk').innerHTML = jk;
+    document.getElementById('hasil_berat_badan').innerHTML = berat_badan + ' kg ';
+    document.getElementById('hasil_tinggi_badan').innerHTML = tinggi_badan + ' cm ';
+    
+  // BERAT BADAN
+
+if (totalBulan == 0 && jk === "Laki-Laki" && berat_badan >= 2.5 && berat_badan <= 3.9  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 0 && jk === "Laki-Laki" && berat_badan < 2.5 && berat_badan >= 2.1){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 0 && jk === "Laki-Laki" && berat_badan > 3.9){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 0 && jk === "Laki-Laki" && berat_badan < 2.1){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+if (totalBulan == 1 && jk === "Laki-Laki" && berat_badan >= 3.4 && berat_badan <= 5.1  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 1 && jk === "Laki-Laki" && berat_badan < 3.4 && berat_badan >= 2.9){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 1 && jk === "Laki-Laki" && berat_badan > 5.1){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 1 && jk === "Laki-Laki" && berat_badan < 2.9){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 2 && jk === "Laki-Laki" && berat_badan >= 4.3 && berat_badan <= 6.3  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 2 && jk === "Laki-Laki" && berat_badan < 4.3 && berat_badan >= 3.8){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 2 && jk === "Laki-Laki" && berat_badan > 6.3){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 2 && jk === "Laki-Laki" && berat_badan < 3.8){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 3 && jk === "Laki-Laki" && berat_badan >= 5 && berat_badan <= 7.2  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 3 && jk === "Laki-Laki" && berat_badan < 5 && berat_badan >= 4.4){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 3 && jk === "Laki-Laki" && berat_badan > 7.2){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 3 && jk === "Laki-Laki" && berat_badan < 4.4){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 4 && jk === "Laki-Laki" && berat_badan >= 5.6 && berat_badan <= 7.8  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 4 && jk === "Laki-Laki" && berat_badan < 5.6 && berat_badan >= 4.9){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 4 && jk === "Laki-Laki" && berat_badan > 7.8){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 4 && jk === "Laki-Laki" && berat_badan < 4.9){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 5 && jk === "Laki-Laki" && berat_badan >= 6 && berat_badan <= 8.4  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 5 && jk === "Laki-Laki" && berat_badan < 6 && berat_badan >= 5.3){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 5 && jk === "Laki-Laki" && berat_badan > 8.4){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 5 && jk === "Laki-Laki" && berat_badan < 5.3){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 6 && jk === "Laki-Laki" && berat_badan >= 6.4 && berat_badan <= 8.8  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 6 && jk === "Laki-Laki" && berat_badan < 6.4 && berat_badan >= 5.7){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 6 && jk === "Laki-Laki" && berat_badan > 8.8){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 6 && jk === "Laki-Laki" && berat_badan < 5.7){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 7 && jk === "Laki-Laki" && berat_badan >= 6.7 && berat_badan <= 9.2  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 7 && jk === "Laki-Laki" && berat_badan < 6.7 && berat_badan >= 5.9){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 7 && jk === "Laki-Laki" && berat_badan > 9.2){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 7 && jk === "Laki-Laki" && berat_badan < 5.9){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 8 && jk === "Laki-Laki" && berat_badan >= 6.9 && berat_badan <= 9.6  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 8 && jk === "Laki-Laki" && berat_badan < 6.9 && berat_badan >= 6.2){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 8 && jk === "Laki-Laki" && berat_badan > 9.6){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 8 && jk === "Laki-Laki" && berat_badan < 6.2){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 9 && jk === "Laki-Laki" && berat_badan >= 7.1 && berat_badan <= 9.9  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 9 && jk === "Laki-Laki" && berat_badan < 7.1 && berat_badan >= 6.4){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 9 && jk === "Laki-Laki" && berat_badan > 9.9){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 9 && jk === "Laki-Laki" && berat_badan < 6.4){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 10 && jk === "Laki-Laki" && berat_badan >= 7.4 && berat_badan <= 10.2  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 10 && jk === "Laki-Laki" && berat_badan < 7.4 && berat_badan >= 6.6){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 10 && jk === "Laki-Laki" && berat_badan > 10.2){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 10 && jk === "Laki-Laki" && berat_badan < 6.6){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 11 && jk === "Laki-Laki" && berat_badan >= 7.6 && berat_badan <= 10.5  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 11 && jk === "Laki-Laki" && berat_badan < 7.6 && berat_badan >= 6.8){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 11 && jk === "Laki-Laki" && berat_badan > 10.5){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 11 && jk === "Laki-Laki" && berat_badan < 6.8){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 12 && jk === "Laki-Laki" && berat_badan >= 7.7 && berat_badan <= 10.8  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 12 && jk === "Laki-Laki" && berat_badan < 7.7 && berat_badan >= 6.9){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 12 && jk === "Laki-Laki" && berat_badan > 10.8){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 12 && jk === "Laki-Laki" && berat_badan < 6.9){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 13 && jk === "Laki-Laki" && berat_badan >= 7.9 && berat_badan <= 11  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 13 && jk === "Laki-Laki" && berat_badan < 7.9 && berat_badan >= 7.1){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 13 && jk === "Laki-Laki" && berat_badan > 11){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 13 && jk === "Laki-Laki" && berat_badan < 7.1){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 14 && jk === "Laki-Laki" && berat_badan >= 8.1 && berat_badan <= 11.3  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 14 && jk === "Laki-Laki" && berat_badan < 8.1 && berat_badan >= 7.2){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 14 && jk === "Laki-Laki" && berat_badan > 11.3){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 14 && jk === "Laki-Laki" && berat_badan < 7.2){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 15 && jk === "Laki-Laki" && berat_badan >= 8.3 && berat_badan <= 11.5  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 15 && jk === "Laki-Laki" && berat_badan < 8.3 && berat_badan >= 7.4){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 15 && jk === "Laki-Laki" && berat_badan > 11.5){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 15 && jk === "Laki-Laki" && berat_badan < 7.4){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 16 && jk === "Laki-Laki" && berat_badan >= 8.4 && berat_badan <= 11.7  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 16 && jk === "Laki-Laki" && berat_badan < 8.4 && berat_badan >= 7.5){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 16 && jk === "Laki-Laki" && berat_badan > 11.7){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 16 && jk === "Laki-Laki" && berat_badan < 7.5){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 17 && jk === "Laki-Laki" && berat_badan >= 8.6 && berat_badan <= 12  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 17 && jk === "Laki-Laki" && berat_badan < 8.6 && berat_badan >= 7.7){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 17 && jk === "Laki-Laki" && berat_badan > 12){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 17 && jk === "Laki-Laki" && berat_badan < 7.7){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 18 && jk === "Laki-Laki" && berat_badan >= 8.8 && berat_badan <= 12.2  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 18 && jk === "Laki-Laki" && berat_badan < 8.8 && berat_badan >= 7.8){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 18 && jk === "Laki-Laki" && berat_badan > 12.2){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 18 && jk === "Laki-Laki" && berat_badan < 7.8){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 19 && jk === "Laki-Laki" && berat_badan >= 8.9 && berat_badan <= 12.5  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 19 && jk === "Laki-Laki" && berat_badan < 8.9 && berat_badan >= 8){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 19 && jk === "Laki-Laki" && berat_badan > 12.5){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 19 && jk === "Laki-Laki" && berat_badan < 8){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 20 && jk === "Laki-Laki" && berat_badan >= 9.1 && berat_badan <= 12.7  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 20 && jk === "Laki-Laki" && berat_badan < 9.1 && berat_badan >= 8.1){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 20 && jk === "Laki-Laki" && berat_badan > 12.7){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 20 && jk === "Laki-Laki" && berat_badan < 8.1){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 21 && jk === "Laki-Laki" && berat_badan >= 9.2 && berat_badan <= 12.9  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 21 && jk === "Laki-Laki" && berat_badan < 9.2 && berat_badan >= 8.2){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 21 && jk === "Laki-Laki" && berat_badan > 12.9){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 21 && jk === "Laki-Laki" && berat_badan < 8.2){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 22 && jk === "Laki-Laki" && berat_badan >= 9.4 && berat_badan <= 13.2  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 22 && jk === "Laki-Laki" && berat_badan < 9.4 && berat_badan >= 8.4){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 22 && jk === "Laki-Laki" && berat_badan > 13.2){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 22 && jk === "Laki-Laki" && berat_badan < 8.4){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 23 && jk === "Laki-Laki" && berat_badan >= 9.5 && berat_badan <= 13.4  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 23 && jk === "Laki-Laki" && berat_badan < 9.5 && berat_badan >= 8.5){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 23 && jk === "Laki-Laki" && berat_badan > 13.4){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 23 && jk === "Laki-Laki" && berat_badan < 8.5){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 24 && jk === "Laki-Laki" && berat_badan >= 9.7 && berat_badan <= 13.6  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 24 && jk === "Laki-Laki" && berat_badan < 9.7 && berat_badan >= 8.6){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 24 && jk === "Laki-Laki" && berat_badan > 13.6){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 24 && jk === "Laki-Laki" && berat_badan < 8.6){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 25 && jk === "Laki-Laki" && berat_badan >= 9.8 && berat_badan <= 13.9  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 25 && jk === "Laki-Laki" && berat_badan < 9.8 && berat_badan >= 8.8){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 25 && jk === "Laki-Laki" && berat_badan > 13.9){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 25 && jk === "Laki-Laki" && berat_badan < 8.8){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 26 && jk === "Laki-Laki" && berat_badan >= 10 && berat_badan <= 14.1  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 26 && jk === "Laki-Laki" && berat_badan < 10 && berat_badan >= 8.9){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 26 && jk === "Laki-Laki" && berat_badan > 14.1){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 26 && jk === "Laki-Laki" && berat_badan < 8.9){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 27 && jk === "Laki-Laki" && berat_badan >= 10.1 && berat_badan <= 14.3  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 27 && jk === "Laki-Laki" && berat_badan < 10.1 && berat_badan >= 9){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 27 && jk === "Laki-Laki" && berat_badan > 14.3){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 27 && jk === "Laki-Laki" && berat_badan < 9){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 28 && jk === "Laki-Laki" && berat_badan >= 10.2 && berat_badan <= 14.5  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 28 && jk === "Laki-Laki" && berat_badan < 10.2 && berat_badan >= 9.1){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 28 && jk === "Laki-Laki" && berat_badan > 14.5){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 28 && jk === "Laki-Laki" && berat_badan < 9.1){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 29 && jk === "Laki-Laki" && berat_badan >= 10.4 && berat_badan <= 14.8  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 29 && jk === "Laki-Laki" && berat_badan < 10.4 && berat_badan >= 9.2){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 29 && jk === "Laki-Laki" && berat_badan > 14.8){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 29 && jk === "Laki-Laki" && berat_badan < 9.2){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 30 && jk === "Laki-Laki" && berat_badan >= 10.5 && berat_badan <= 15  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 30 && jk === "Laki-Laki" && berat_badan < 10.5 && berat_badan >= 9.4){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 30 && jk === "Laki-Laki" && berat_badan > 15){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 30 && jk === "Laki-Laki" && berat_badan < 9.4){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 31 && jk === "Laki-Laki" && berat_badan >= 10.7 && berat_badan <= 15.2  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 31 && jk === "Laki-Laki" && berat_badan < 10.7 && berat_badan >= 9.5){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 31 && jk === "Laki-Laki" && berat_badan > 15.2){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 31 && jk === "Laki-Laki" && berat_badan < 9.5){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 32 && jk === "Laki-Laki" && berat_badan >= 10.8 && berat_badan <= 15.4  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 32 && jk === "Laki-Laki" && berat_badan < 10.8 && berat_badan >= 9.6){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 32 && jk === "Laki-Laki" && berat_badan > 15.4){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 32 && jk === "Laki-Laki" && berat_badan < 9.6){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 33 && jk === "Laki-Laki" && berat_badan >= 10.9 && berat_badan <= 15.6  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 33 && jk === "Laki-Laki" && berat_badan < 10.9 && berat_badan >= 9.7){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 33 && jk === "Laki-Laki" && berat_badan > 15.6){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 33 && jk === "Laki-Laki" && berat_badan < 9.7){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 34 && jk === "Laki-Laki" && berat_badan >= 11 && berat_badan <= 15.8  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 34 && jk === "Laki-Laki" && berat_badan < 11 && berat_badan >= 9.8){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 34 && jk === "Laki-Laki" && berat_badan > 15.8){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 34 && jk === "Laki-Laki" && berat_badan < 9.8){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 35 && jk === "Laki-Laki" && berat_badan >= 11.2 && berat_badan <= 16  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 35 && jk === "Laki-Laki" && berat_badan < 11.2 && berat_badan >= 9.9){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 35 && jk === "Laki-Laki" && berat_badan > 16){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 35 && jk === "Laki-Laki" && berat_badan < 9.9){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 36 && jk === "Laki-Laki" && berat_badan >= 11.3 && berat_badan <= 16.2  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 36 && jk === "Laki-Laki" && berat_badan < 11.3 && berat_badan >= 10){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 36 && jk === "Laki-Laki" && berat_badan > 16.2){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 36 && jk === "Laki-Laki" && berat_badan < 10){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 37 && jk === "Laki-Laki" && berat_badan >= 11.4 && berat_badan <= 16.4  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 37 && jk === "Laki-Laki" && berat_badan < 11.4 && berat_badan >= 10.1){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 37 && jk === "Laki-Laki" && berat_badan > 16.4){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 37 && jk === "Laki-Laki" && berat_badan < 10.1){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 38 && jk === "Laki-Laki" && berat_badan >= 11.5 && berat_badan <= 16.6  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 38 && jk === "Laki-Laki" && berat_badan < 11.5 && berat_badan >= 10.2){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 38 && jk === "Laki-Laki" && berat_badan > 16.6){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 38 && jk === "Laki-Laki" && berat_badan < 10.2){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 39 && jk === "Laki-Laki" && berat_badan >= 11.6 && berat_badan <= 16.8  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 39 && jk === "Laki-Laki" && berat_badan < 11.6 && berat_badan >= 10.3){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 39 && jk === "Laki-Laki" && berat_badan > 16.8){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 39 && jk === "Laki-Laki" && berat_badan < 10.3){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 40 && jk === "Laki-Laki" && berat_badan >= 11.8 && berat_badan <= 17  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 40 && jk === "Laki-Laki" && berat_badan < 11.8 && berat_badan >= 10.4){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 40 && jk === "Laki-Laki" && berat_badan > 17){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 40 && jk === "Laki-Laki" && berat_badan < 10.4){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 41 && jk === "Laki-Laki" && berat_badan >= 11.9 && berat_badan <= 17.2  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 41 && jk === "Laki-Laki" && berat_badan < 11.9 && berat_badan >= 10.5){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 41 && jk === "Laki-Laki" && berat_badan > 17.2){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 41 && jk === "Laki-Laki" && berat_badan < 10.5){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 42 && jk === "Laki-Laki" && berat_badan >= 12 && berat_badan <= 17.4  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 42 && jk === "Laki-Laki" && berat_badan < 12 && berat_badan >= 10.6){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 42 && jk === "Laki-Laki" && berat_badan > 17.4){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 42 && jk === "Laki-Laki" && berat_badan < 10.6){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 43 && jk === "Laki-Laki" && berat_badan >= 12.1 && berat_badan <= 17.6  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 43 && jk === "Laki-Laki" && berat_badan < 12.1 && berat_badan >= 10.7){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 43 && jk === "Laki-Laki" && berat_badan > 17.6){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 43 && jk === "Laki-Laki" && berat_badan < 10.7){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 44 && jk === "Laki-Laki" && berat_badan >= 12.2 && berat_badan <= 17.8  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 44 && jk === "Laki-Laki" && berat_badan < 12.2 && berat_badan >= 10.8){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 44 && jk === "Laki-Laki" && berat_badan > 17.8){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 44 && jk === "Laki-Laki" && berat_badan < 10.8){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 45 && jk === "Laki-Laki" && berat_badan >= 12.4 && berat_badan <= 18  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 45 && jk === "Laki-Laki" && berat_badan < 12.4 && berat_badan >= 10.9){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 45 && jk === "Laki-Laki" && berat_badan > 18){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 45 && jk === "Laki-Laki" && berat_badan < 10.9){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 46 && jk === "Laki-Laki" && berat_badan >= 12.5 && berat_badan <= 18.2  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 46 && jk === "Laki-Laki" && berat_badan < 12.5 && berat_badan >= 11){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 46 && jk === "Laki-Laki" && berat_badan > 18.2){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 46 && jk === "Laki-Laki" && berat_badan < 11){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 47 && jk === "Laki-Laki" && berat_badan >= 12.6 && berat_badan <= 18.4  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 47 && jk === "Laki-Laki" && berat_badan < 12.6 && berat_badan >= 11.1){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 47 && jk === "Laki-Laki" && berat_badan > 18.4){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 47 && jk === "Laki-Laki" && berat_badan < 11.1){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 48 && jk === "Laki-Laki" && berat_badan >= 12.7 && berat_badan <= 18.6  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 48 && jk === "Laki-Laki" && berat_badan < 12.7 && berat_badan >= 11.2){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 48 && jk === "Laki-Laki" && berat_badan > 18.6){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 48 && jk === "Laki-Laki" && berat_badan < 11.2){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 49 && jk === "Laki-Laki" && berat_badan >= 12.8 && berat_badan <= 18.8  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 49 && jk === "Laki-Laki" && berat_badan < 12.8 && berat_badan >= 11.3){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 49 && jk === "Laki-Laki" && berat_badan > 18.8){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 49 && jk === "Laki-Laki" && berat_badan < 11.3){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 51 && jk === "Laki-Laki" && berat_badan >= 12.9 && berat_badan <= 19  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 51 && jk === "Laki-Laki" && berat_badan < 12.9 && berat_badan >= 11.4){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 51 && jk === "Laki-Laki" && berat_badan > 19){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 51 && jk === "Laki-Laki" && berat_badan < 11.4){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 52 && jk === "Laki-Laki" && berat_badan >= 13.1 && berat_badan <= 19.2  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 52 && jk === "Laki-Laki" && berat_badan < 13.1 && berat_badan >= 11.5){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 52 && jk === "Laki-Laki" && berat_badan > 19.2){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 52 && jk === "Laki-Laki" && berat_badan < 11.5){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 53 && jk === "Laki-Laki" && berat_badan >= 13.2 && berat_badan <= 19.4  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 53 && jk === "Laki-Laki" && berat_badan < 13.2 && berat_badan >= 11.6){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 53 && jk === "Laki-Laki" && berat_badan > 19.4){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 53 && jk === "Laki-Laki" && berat_badan < 11.6){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 54 && jk === "Laki-Laki" && berat_badan >= 13.3 && berat_badan <= 19.6  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 54 && jk === "Laki-Laki" && berat_badan < 13.3 && berat_badan >= 11.7){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 54 && jk === "Laki-Laki" && berat_badan > 19.6){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 54 && jk === "Laki-Laki" && berat_badan < 11.7){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 55 && jk === "Laki-Laki" && berat_badan >= 13.4 && berat_badan <= 19.8  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 55 && jk === "Laki-Laki" && berat_badan < 13.4 && berat_badan >= 11.8){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 55 && jk === "Laki-Laki" && berat_badan > 19.8){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 55 && jk === "Laki-Laki" && berat_badan < 11.8){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 56 && jk === "Laki-Laki" && berat_badan >= 13.5 && berat_badan <= 20  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 56 && jk === "Laki-Laki" && berat_badan < 13.5 && berat_badan >= 11.9){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 56 && jk === "Laki-Laki" && berat_badan > 20){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 56 && jk === "Laki-Laki" && berat_badan < 11.9){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 57 && jk === "Laki-Laki" && berat_badan >= 13.6 && berat_badan <= 20.2  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 57 && jk === "Laki-Laki" && berat_badan < 13.6 && berat_badan >= 12){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 57 && jk === "Laki-Laki" && berat_badan > 20.2){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 57 && jk === "Laki-Laki" && berat_badan < 12){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 58 && jk === "Laki-Laki" && berat_badan >= 13.7 && berat_badan <= 20.4  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 58 && jk === "Laki-Laki" && berat_badan < 13.7 && berat_badan >= 12.1){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 58 && jk === "Laki-Laki" && berat_badan > 20.4){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 58 && jk === "Laki-Laki" && berat_badan < 12.1){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 59 && jk === "Laki-Laki" && berat_badan >= 13.8 && berat_badan <= 20.6  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 59 && jk === "Laki-Laki" && berat_badan < 13.8 && berat_badan >= 12.2){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 59 && jk === "Laki-Laki" && berat_badan > 20.6){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 59 && jk === "Laki-Laki" && berat_badan < 12.2){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 60 && jk === "Laki-Laki" && berat_badan >= 14 && berat_badan <= 20.8  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 60 && jk === "Laki-Laki" && berat_badan < 14 && berat_badan >= 12.3){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 60 && jk === "Laki-Laki" && berat_badan > 20.8){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 60 && jk === "Laki-Laki" && berat_badan < 12.3){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+//PANJANG Badan
+
+
+if (totalBulan == 0 && jk === "Laki-Laki" && tinggi_badan >= 46.1 && tinggi_badan <= 55.6  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 0 && jk === "Laki-Laki" && tinggi_badan > 55.6){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 0 && jk === "Laki-Laki" && tinggi_badan < 46.1 && tinggi_badan >= 44.2){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 0 && jk === "Laki-Laki" && tinggi_badan < 44.2){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 1 && jk === "Laki-Laki" && tinggi_badan >= 50.8 && tinggi_badan <= 60.6  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 1 && jk === "Laki-Laki" && tinggi_badan > 60.6){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 1 && jk === "Laki-Laki" && tinggi_badan < 50.8 && tinggi_badan >= 48.9){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 1 && jk === "Laki-Laki" && tinggi_badan < 48.9){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 2 && jk === "Laki-Laki" && tinggi_badan >= 54.4 && tinggi_badan <= 64.4  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 2 && jk === "Laki-Laki" && tinggi_badan > 64.4){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 2 && jk === "Laki-Laki" && tinggi_badan < 54.4 && tinggi_badan >= 52.4){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 2 && jk === "Laki-Laki" && tinggi_badan < 52.4){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 3 && jk === "Laki-Laki" && tinggi_badan >= 57.3 && tinggi_badan <= 67.6  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 3 && jk === "Laki-Laki" && tinggi_badan > 67.6){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 3 && jk === "Laki-Laki" && tinggi_badan < 57.3 && tinggi_badan >= 55.3){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 3 && jk === "Laki-Laki" && tinggi_badan < 55.3){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 4 && jk === "Laki-Laki" && tinggi_badan >= 59.7 && tinggi_badan <= 70.1  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 4 && jk === "Laki-Laki" && tinggi_badan > 70.1){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 4 && jk === "Laki-Laki" && tinggi_badan < 59.7 && tinggi_badan >= 57.6){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 4 && jk === "Laki-Laki" && tinggi_badan < 57.6){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 5 && jk === "Laki-Laki" && tinggi_badan >= 61.7 && tinggi_badan <= 72.2  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 5 && jk === "Laki-Laki" && tinggi_badan > 72.2){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 5 && jk === "Laki-Laki" && tinggi_badan < 61.7 && tinggi_badan >= 59.6){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 5 && jk === "Laki-Laki" && tinggi_badan < 59.6){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 6 && jk === "Laki-Laki" && tinggi_badan >= 63.3 && tinggi_badan <= 74  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 6 && jk === "Laki-Laki" && tinggi_badan > 74){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 6 && jk === "Laki-Laki" && tinggi_badan < 63.3 && tinggi_badan >= 61.2){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 6 && jk === "Laki-Laki" && tinggi_badan < 61.2){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 7 && jk === "Laki-Laki" && tinggi_badan >= 64.8 && tinggi_badan <= 75.7  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 7 && jk === "Laki-Laki" && tinggi_badan > 75.7){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 7 && jk === "Laki-Laki" && tinggi_badan < 64.8 && tinggi_badan >= 62.7){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 7 && jk === "Laki-Laki" && tinggi_badan < 62.7){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 8 && jk === "Laki-Laki" && tinggi_badan >= 66.2 && tinggi_badan <= 77.2  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 8 && jk === "Laki-Laki" && tinggi_badan > 77.2){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 8 && jk === "Laki-Laki" && tinggi_badan < 66.2 && tinggi_badan >= 64){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 8 && jk === "Laki-Laki" && tinggi_badan < 64){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 9 && jk === "Laki-Laki" && tinggi_badan >= 67.5 && tinggi_badan <= 78.7  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 9 && jk === "Laki-Laki" && tinggi_badan > 78.7){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 9 && jk === "Laki-Laki" && tinggi_badan < 67.5 && tinggi_badan >= 65.2){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 9 && jk === "Laki-Laki" && tinggi_badan < 65.2){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 10 && jk === "Laki-Laki" && tinggi_badan >= 68.7 && tinggi_badan <= 80.1  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 10 && jk === "Laki-Laki" && tinggi_badan > 80.1){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 10 && jk === "Laki-Laki" && tinggi_badan < 68.7 && tinggi_badan >= 66.4){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 10 && jk === "Laki-Laki" && tinggi_badan < 66.4){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 11 && jk === "Laki-Laki" && tinggi_badan >= 69.9 && tinggi_badan <= 81.5  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 11 && jk === "Laki-Laki" && tinggi_badan > 81.5){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 11 && jk === "Laki-Laki" && tinggi_badan < 69.9 && tinggi_badan >= 67.6){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 11 && jk === "Laki-Laki" && tinggi_badan < 67.6){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 12 && jk === "Laki-Laki" && tinggi_badan >= 71 && tinggi_badan <= 82.9  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 12 && jk === "Laki-Laki" && tinggi_badan > 82.9){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 12 && jk === "Laki-Laki" && tinggi_badan < 71 && tinggi_badan >= 68.6){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 12 && jk === "Laki-Laki" && tinggi_badan < 68.6){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 13 && jk === "Laki-Laki" && tinggi_badan >= 72.1 && tinggi_badan <= 84.2  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 13 && jk === "Laki-Laki" && tinggi_badan > 84.2){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 13 && jk === "Laki-Laki" && tinggi_badan < 72.1 && tinggi_badan >= 69.6){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 13 && jk === "Laki-Laki" && tinggi_badan < 69.6){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 14 && jk === "Laki-Laki" && tinggi_badan >= 73.1 && tinggi_badan <= 85.5  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 14 && jk === "Laki-Laki" && tinggi_badan > 85.5){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 14 && jk === "Laki-Laki" && tinggi_badan < 73.1 && tinggi_badan >= 70.6){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 14 && jk === "Laki-Laki" && tinggi_badan < 70.6){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 15 && jk === "Laki-Laki" && tinggi_badan >= 74.1 && tinggi_badan <= 86.7  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 15 && jk === "Laki-Laki" && tinggi_badan > 86.7){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 15 && jk === "Laki-Laki" && tinggi_badan < 74.1 && tinggi_badan >= 71.6){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 15 && jk === "Laki-Laki" && tinggi_badan < 71.6){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 16 && jk === "Laki-Laki" && tinggi_badan >= 75 && tinggi_badan <= 88  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 16 && jk === "Laki-Laki" && tinggi_badan > 88){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 16 && jk === "Laki-Laki" && tinggi_badan < 75 && tinggi_badan >= 72.5){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 16 && jk === "Laki-Laki" && tinggi_badan < 72.5){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 17 && jk === "Laki-Laki" && tinggi_badan >= 76 && tinggi_badan <= 89.2  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 17 && jk === "Laki-Laki" && tinggi_badan > 89.2){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 17 && jk === "Laki-Laki" && tinggi_badan < 76 && tinggi_badan >= 73.3){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 17 && jk === "Laki-Laki" && tinggi_badan < 73.3){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 18 && jk === "Laki-Laki" && tinggi_badan >= 76.9 && tinggi_badan <= 90.4  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 18 && jk === "Laki-Laki" && tinggi_badan > 90.4){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 18 && jk === "Laki-Laki" && tinggi_badan < 76.9 && tinggi_badan >= 74.2){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 18 && jk === "Laki-Laki" && tinggi_badan < 74.2){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 19 && jk === "Laki-Laki" && tinggi_badan >= 77.7 && tinggi_badan <= 91.5  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 19 && jk === "Laki-Laki" && tinggi_badan > 91.5){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 19 && jk === "Laki-Laki" && tinggi_badan < 77.7 && tinggi_badan >= 75){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 19 && jk === "Laki-Laki" && tinggi_badan < 75){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 20 && jk === "Laki-Laki" && tinggi_badan >= 78.6 && tinggi_badan <= 92.6  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 20 && jk === "Laki-Laki" && tinggi_badan > 92.6){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 20 && jk === "Laki-Laki" && tinggi_badan < 78.6 && tinggi_badan >= 75.8){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 20 && jk === "Laki-Laki" && tinggi_badan < 75.8){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 21 && jk === "Laki-Laki" && tinggi_badan >= 79.4 && tinggi_badan <= 93.8  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 21 && jk === "Laki-Laki" && tinggi_badan > 93.8){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 21 && jk === "Laki-Laki" && tinggi_badan < 79.4 && tinggi_badan >= 76.5){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 21 && jk === "Laki-Laki" && tinggi_badan < 76.5){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 22 && jk === "Laki-Laki" && tinggi_badan >= 80.2 && tinggi_badan <= 94.9  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 22 && jk === "Laki-Laki" && tinggi_badan > 94.9){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 22 && jk === "Laki-Laki" && tinggi_badan < 80.2 && tinggi_badan >= 77.2){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 22 && jk === "Laki-Laki" && tinggi_badan < 77.2){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 23 && jk === "Laki-Laki" && tinggi_badan >= 81 && tinggi_badan <= 95.9  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 23 && jk === "Laki-Laki" && tinggi_badan > 95.9){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 23 && jk === "Laki-Laki" && tinggi_badan < 81 && tinggi_badan >= 78){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 23 && jk === "Laki-Laki" && tinggi_badan < 78){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 24 && jk === "Laki-Laki" && tinggi_badan >= 81.7 && tinggi_badan <= 97  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 24 && jk === "Laki-Laki" && tinggi_badan > 97){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 24 && jk === "Laki-Laki" && tinggi_badan < 81.7 && tinggi_badan >= 78.7){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 24 && jk === "Laki-Laki" && tinggi_badan < 78.7){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 25 && jk === "Laki-Laki" && tinggi_badan >= 81.7 && tinggi_badan <= 97.3  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 25 && jk === "Laki-Laki" && tinggi_badan > 97.3){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 25 && jk === "Laki-Laki" && tinggi_badan < 81.7 && tinggi_badan >= 78.6){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 25 && jk === "Laki-Laki" && tinggi_badan < 78.6){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 26 && jk === "Laki-Laki" && tinggi_badan >= 82.5 && tinggi_badan <= 98.3  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 26 && jk === "Laki-Laki" && tinggi_badan > 98.3){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 26 && jk === "Laki-Laki" && tinggi_badan < 82.5 && tinggi_badan >= 79.3){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 26 && jk === "Laki-Laki" && tinggi_badan < 79.3){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 27 && jk === "Laki-Laki" && tinggi_badan >= 83.1 && tinggi_badan <= 99.3  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 27 && jk === "Laki-Laki" && tinggi_badan > 99.3){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 27 && jk === "Laki-Laki" && tinggi_badan < 83.1 && tinggi_badan >= 79.9){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 27 && jk === "Laki-Laki" && tinggi_badan < 79.9){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 28 && jk === "Laki-Laki" && tinggi_badan >= 83.8 && tinggi_badan <= 100.3  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 28 && jk === "Laki-Laki" && tinggi_badan > 100.3){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 28 && jk === "Laki-Laki" && tinggi_badan < 83.8 && tinggi_badan >= 80.5){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 28 && jk === "Laki-Laki" && tinggi_badan < 80.5){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 29 && jk === "Laki-Laki" && tinggi_badan >= 84.5 && tinggi_badan <= 101.2  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 29 && jk === "Laki-Laki" && tinggi_badan > 101.2){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 29 && jk === "Laki-Laki" && tinggi_badan < 84.5 && tinggi_badan >= 81.1){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 29 && jk === "Laki-Laki" && tinggi_badan < 81.1){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 30 && jk === "Laki-Laki" && tinggi_badan >= 85.1 && tinggi_badan <= 102.1  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 30 && jk === "Laki-Laki" && tinggi_badan > 102.1){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 30 && jk === "Laki-Laki" && tinggi_badan < 85.1 && tinggi_badan >= 81.7){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 30 && jk === "Laki-Laki" && tinggi_badan < 81.7){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 31 && jk === "Laki-Laki" && tinggi_badan >= 85.7 && tinggi_badan <= 103  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 31 && jk === "Laki-Laki" && tinggi_badan > 103){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 31 && jk === "Laki-Laki" && tinggi_badan < 85.7 && tinggi_badan >= 82.3){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 31 && jk === "Laki-Laki" && tinggi_badan < 82.3){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 32 && jk === "Laki-Laki" && tinggi_badan >= 86.4 && tinggi_badan <= 103.9  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 32 && jk === "Laki-Laki" && tinggi_badan > 103.9){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 32 && jk === "Laki-Laki" && tinggi_badan < 86.4 && tinggi_badan >= 82.8){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 32 && jk === "Laki-Laki" && tinggi_badan < 82.8){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 33 && jk === "Laki-Laki" && tinggi_badan >= 86.9 && tinggi_badan <= 104.8  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 33 && jk === "Laki-Laki" && tinggi_badan > 104.8){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 33 && jk === "Laki-Laki" && tinggi_badan < 86.9 && tinggi_badan >= 83.4){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 33 && jk === "Laki-Laki" && tinggi_badan < 83.4){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 34 && jk === "Laki-Laki" && tinggi_badan >= 87.5 && tinggi_badan <= 105.6  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 34 && jk === "Laki-Laki" && tinggi_badan > 105.6){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 34 && jk === "Laki-Laki" && tinggi_badan < 87.5 && tinggi_badan >= 83.9){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 34 && jk === "Laki-Laki" && tinggi_badan < 83.9){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 35 && jk === "Laki-Laki" && tinggi_badan >= 88.1 && tinggi_badan <= 106.4  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 35 && jk === "Laki-Laki" && tinggi_badan > 106.4){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 35 && jk === "Laki-Laki" && tinggi_badan < 88.1 && tinggi_badan >= 84.4){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 35 && jk === "Laki-Laki" && tinggi_badan < 84.4){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 36 && jk === "Laki-Laki" && tinggi_badan >= 88.7 && tinggi_badan <= 107.2  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 36 && jk === "Laki-Laki" && tinggi_badan > 107.2){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 36 && jk === "Laki-Laki" && tinggi_badan < 88.7 && tinggi_badan >= 85){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 36 && jk === "Laki-Laki" && tinggi_badan < 85){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 37 && jk === "Laki-Laki" && tinggi_badan >= 89.2 && tinggi_badan <= 108  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 37 && jk === "Laki-Laki" && tinggi_badan > 108){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 37 && jk === "Laki-Laki" && tinggi_badan < 89.2 && tinggi_badan >= 85.5){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 37 && jk === "Laki-Laki" && tinggi_badan < 85.5){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 38 && jk === "Laki-Laki" && tinggi_badan >= 89.8 && tinggi_badan <= 108.8  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 38 && jk === "Laki-Laki" && tinggi_badan > 108.8){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 38 && jk === "Laki-Laki" && tinggi_badan < 89.8 && tinggi_badan >= 86){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 38 && jk === "Laki-Laki" && tinggi_badan < 86){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 39 && jk === "Laki-Laki" && tinggi_badan >= 90.3 && tinggi_badan <= 109.5  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 39 && jk === "Laki-Laki" && tinggi_badan > 109.5){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 39 && jk === "Laki-Laki" && tinggi_badan < 90.3 && tinggi_badan >= 86.5){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 39 && jk === "Laki-Laki" && tinggi_badan < 86.5){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 40 && jk === "Laki-Laki" && tinggi_badan >= 90.9 && tinggi_badan <= 110.3  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 40 && jk === "Laki-Laki" && tinggi_badan > 110.3){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 40 && jk === "Laki-Laki" && tinggi_badan < 90.9 && tinggi_badan >= 87){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 40 && jk === "Laki-Laki" && tinggi_badan < 87){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 41 && jk === "Laki-Laki" && tinggi_badan >= 91.4 && tinggi_badan <= 111  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 41 && jk === "Laki-Laki" && tinggi_badan > 111){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 41 && jk === "Laki-Laki" && tinggi_badan < 91.4 && tinggi_badan >= 87.5){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 41 && jk === "Laki-Laki" && tinggi_badan < 87.5){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 42 && jk === "Laki-Laki" && tinggi_badan >= 91.9 && tinggi_badan <= 111.7  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 42 && jk === "Laki-Laki" && tinggi_badan > 111.7){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 42 && jk === "Laki-Laki" && tinggi_badan < 91.9 && tinggi_badan >= 88){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 42 && jk === "Laki-Laki" && tinggi_badan < 88){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 43 && jk === "Laki-Laki" && tinggi_badan >= 92.4 && tinggi_badan <= 112.5  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 43 && jk === "Laki-Laki" && tinggi_badan > 112.5){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 43 && jk === "Laki-Laki" && tinggi_badan < 92.4 && tinggi_badan >= 88.4){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 43 && jk === "Laki-Laki" && tinggi_badan < 88.4){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 44 && jk === "Laki-Laki" && tinggi_badan >= 93 && tinggi_badan <= 113.2  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 44 && jk === "Laki-Laki" && tinggi_badan > 113.2){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 44 && jk === "Laki-Laki" && tinggi_badan < 93 && tinggi_badan >= 88.9){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 44 && jk === "Laki-Laki" && tinggi_badan < 88.9){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 45 && jk === "Laki-Laki" && tinggi_badan >= 93.5 && tinggi_badan <= 113.9  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 45 && jk === "Laki-Laki" && tinggi_badan > 113.9){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 45 && jk === "Laki-Laki" && tinggi_badan < 93.5 && tinggi_badan >= 89.4){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 45 && jk === "Laki-Laki" && tinggi_badan < 89.4){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 46 && jk === "Laki-Laki" && tinggi_badan >= 94 && tinggi_badan <= 114.6  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 46 && jk === "Laki-Laki" && tinggi_badan > 114.6){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 46 && jk === "Laki-Laki" && tinggi_badan < 94 && tinggi_badan >= 89.8){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 46 && jk === "Laki-Laki" && tinggi_badan < 89.8){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 47 && jk === "Laki-Laki" && tinggi_badan >= 94.4 && tinggi_badan <= 115.2  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 47 && jk === "Laki-Laki" && tinggi_badan > 115.2){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 47 && jk === "Laki-Laki" && tinggi_badan < 94.4 && tinggi_badan >= 90.3){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 47 && jk === "Laki-Laki" && tinggi_badan < 90.3){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 48 && jk === "Laki-Laki" && tinggi_badan >= 94.9 && tinggi_badan <= 115.9  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 48 && jk === "Laki-Laki" && tinggi_badan > 115.9){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 48 && jk === "Laki-Laki" && tinggi_badan < 94.9 && tinggi_badan >= 90.7){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 48 && jk === "Laki-Laki" && tinggi_badan < 90.7){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 49 && jk === "Laki-Laki" && tinggi_badan >= 95.4 && tinggi_badan <= 116.6  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 49 && jk === "Laki-Laki" && tinggi_badan > 116.6){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 49 && jk === "Laki-Laki" && tinggi_badan < 95.4 && tinggi_badan >= 91.2){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 49 && jk === "Laki-Laki" && tinggi_badan < 91.2){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 51 && jk === "Laki-Laki" && tinggi_badan >= 95.9 && tinggi_badan <= 117.3  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 51 && jk === "Laki-Laki" && tinggi_badan > 117.3){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 51 && jk === "Laki-Laki" && tinggi_badan < 95.9 && tinggi_badan >= 91.6){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 51 && jk === "Laki-Laki" && tinggi_badan < 91.6){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 52 && jk === "Laki-Laki" && tinggi_badan >= 96.4 && tinggi_badan <= 117.9  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 52 && jk === "Laki-Laki" && tinggi_badan > 117.9){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 52 && jk === "Laki-Laki" && tinggi_badan < 96.4 && tinggi_badan >= 92.1){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 52 && jk === "Laki-Laki" && tinggi_badan < 92.1){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 53 && jk === "Laki-Laki" && tinggi_badan >= 96.9 && tinggi_badan <= 118.6  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 53 && jk === "Laki-Laki" && tinggi_badan > 118.6){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 53 && jk === "Laki-Laki" && tinggi_badan < 96.9 && tinggi_badan >= 92.5){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 53 && jk === "Laki-Laki" && tinggi_badan < 92.5){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 54 && jk === "Laki-Laki" && tinggi_badan >= 97.4 && tinggi_badan <= 119.2  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 54 && jk === "Laki-Laki" && tinggi_badan > 119.2){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 54 && jk === "Laki-Laki" && tinggi_badan < 97.4 && tinggi_badan >= 93){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 54 && jk === "Laki-Laki" && tinggi_badan < 93){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 55 && jk === "Laki-Laki" && tinggi_badan >= 97.8 && tinggi_badan <= 119.9  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 55 && jk === "Laki-Laki" && tinggi_badan > 119.9){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 55 && jk === "Laki-Laki" && tinggi_badan < 97.8 && tinggi_badan >= 93.4){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 55 && jk === "Laki-Laki" && tinggi_badan < 93.4){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 56 && jk === "Laki-Laki" && tinggi_badan >= 98.3 && tinggi_badan <= 120.6  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 56 && jk === "Laki-Laki" && tinggi_badan > 120.6){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 56 && jk === "Laki-Laki" && tinggi_badan < 98.3 && tinggi_badan >= 93.9){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 56 && jk === "Laki-Laki" && tinggi_badan < 93.9){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 57 && jk === "Laki-Laki" && tinggi_badan >= 98.8 && tinggi_badan <= 121.2  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 57 && jk === "Laki-Laki" && tinggi_badan > 121.2){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 57 && jk === "Laki-Laki" && tinggi_badan < 98.8 && tinggi_badan >= 94.3){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 57 && jk === "Laki-Laki" && tinggi_badan < 94.3){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 58 && jk === "Laki-Laki" && tinggi_badan >= 99.3 && tinggi_badan <= 121.9  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 58 && jk === "Laki-Laki" && tinggi_badan > 121.9){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 58 && jk === "Laki-Laki" && tinggi_badan < 99.3 && tinggi_badan >= 94.7){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 58 && jk === "Laki-Laki" && tinggi_badan < 94.7){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 59 && jk === "Laki-Laki" && tinggi_badan >= 99.7 && tinggi_badan <= 122.6  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 59 && jk === "Laki-Laki" && tinggi_badan > 122.6){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 59 && jk === "Laki-Laki" && tinggi_badan < 99.7 && tinggi_badan >= 95.2){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 59 && jk === "Laki-Laki" && tinggi_badan < 95.2){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 60 && jk === "Laki-Laki" && tinggi_badan >= 100.2 && tinggi_badan <= 123.2  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 60 && jk === "Laki-Laki" && tinggi_badan > 123.2){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 60 && jk === "Laki-Laki" && tinggi_badan < 100.2 && tinggi_badan >= 95.6){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 60 && jk === "Laki-Laki" && tinggi_badan < 95.6){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+
+//Berat Badan Perempuan
+
+if (totalBulan == 0 && jk === "Perempuan" && berat_badan >= 2.4 && berat_badan <= 3.7  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 0 && jk === "Perempuan" && berat_badan > 3.7){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 0 && jk === "Perempuan" && berat_badan < 2.4 && berat_badan >= 2){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 0 && jk === "Perempuan" && berat_badan < 2){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 1 && jk === "Perempuan" && berat_badan >= 3.2 && berat_badan <= 4.8  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 1 && jk === "Perempuan" && berat_badan > 4.8){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 1 && jk === "Perempuan" && berat_badan < 3.2 && berat_badan >= 2.7){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 1 && jk === "Perempuan" && berat_badan < 2.7){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 2 && jk === "Perempuan" && berat_badan >= 3.9 && berat_badan <= 5.8  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 2 && jk === "Perempuan" && berat_badan > 5.8){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 2 && jk === "Perempuan" && berat_badan < 3.9 && berat_badan >= 3.4){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 2 && jk === "Perempuan" && berat_badan < 3.4){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 3 && jk === "Perempuan" && berat_badan >= 4.5 && berat_badan <= 6.6  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 3 && jk === "Perempuan" && berat_badan > 6.6){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 3 && jk === "Perempuan" && berat_badan < 4.5 && berat_badan >= 4){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 3 && jk === "Perempuan" && berat_badan < 4){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 4 && jk === "Perempuan" && berat_badan >= 5 && berat_badan <= 7.3  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 4 && jk === "Perempuan" && berat_badan > 7.3){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 4 && jk === "Perempuan" && berat_badan < 5 && berat_badan >= 4.4){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 4 && jk === "Perempuan" && berat_badan < 4.4){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 5 && jk === "Perempuan" && berat_badan >= 5.4 && berat_badan <= 7.8  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 5 && jk === "Perempuan" && berat_badan > 7.8){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 5 && jk === "Perempuan" && berat_badan < 5.4 && berat_badan >= 4.8){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 5 && jk === "Perempuan" && berat_badan < 4.8){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 6 && jk === "Perempuan" && berat_badan >= 5.7 && berat_badan <= 8.2  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 6 && jk === "Perempuan" && berat_badan > 8.2){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 6 && jk === "Perempuan" && berat_badan < 5.7 && berat_badan >= 5.1){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 6 && jk === "Perempuan" && berat_badan < 5.1){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 7 && jk === "Perempuan" && berat_badan >= 6 && berat_badan <= 8.6  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 7 && jk === "Perempuan" && berat_badan > 8.6){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 7 && jk === "Perempuan" && berat_badan < 6 && berat_badan >= 5.3){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 7 && jk === "Perempuan" && berat_badan < 5.3){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 8 && jk === "Perempuan" && berat_badan >= 6.3 && berat_badan <= 9  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 8 && jk === "Perempuan" && berat_badan > 9){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 8 && jk === "Perempuan" && berat_badan < 6.3 && berat_badan >= 5.6){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 8 && jk === "Perempuan" && berat_badan < 5.6){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 9 && jk === "Perempuan" && berat_badan >= 6.5 && berat_badan <= 9.3  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 9 && jk === "Perempuan" && berat_badan > 9.3){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 9 && jk === "Perempuan" && berat_badan < 6.5 && berat_badan >= 5.8){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 9 && jk === "Perempuan" && berat_badan < 5.8){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 10 && jk === "Perempuan" && berat_badan >= 6.7 && berat_badan <= 9.6  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 10 && jk === "Perempuan" && berat_badan > 9.6){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 10 && jk === "Perempuan" && berat_badan < 6.7 && berat_badan >= 5.9){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 10 && jk === "Perempuan" && berat_badan < 5.9){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 11 && jk === "Perempuan" && berat_badan >= 6.9 && berat_badan <= 9.9  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 11 && jk === "Perempuan" && berat_badan > 9.9){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 11 && jk === "Perempuan" && berat_badan < 6.9 && berat_badan >= 6.1){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 11 && jk === "Perempuan" && berat_badan < 6.1){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 12 && jk === "Perempuan" && berat_badan >= 7 && berat_badan <= 10.1  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 12 && jk === "Perempuan" && berat_badan > 10.1){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 12 && jk === "Perempuan" && berat_badan < 7 && berat_badan >= 6.3){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 12 && jk === "Perempuan" && berat_badan < 6.3){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 13 && jk === "Perempuan" && berat_badan >= 7.2 && berat_badan <= 10.4  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 13 && jk === "Perempuan" && berat_badan > 10.4){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 13 && jk === "Perempuan" && berat_badan < 7.2 && berat_badan >= 6.4){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 13 && jk === "Perempuan" && berat_badan < 6.4){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 14 && jk === "Perempuan" && berat_badan >= 7.4 && berat_badan <= 10.6  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 14 && jk === "Perempuan" && berat_badan > 10.6){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 14 && jk === "Perempuan" && berat_badan < 7.4 && berat_badan >= 6.6){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 14 && jk === "Perempuan" && berat_badan < 6.6){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 15 && jk === "Perempuan" && berat_badan >= 7.6 && berat_badan <= 10.9  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 15 && jk === "Perempuan" && berat_badan > 10.9){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 15 && jk === "Perempuan" && berat_badan < 7.6 && berat_badan >= 6.7){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 15 && jk === "Perempuan" && berat_badan < 6.7){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 16 && jk === "Perempuan" && berat_badan >= 7.7 && berat_badan <= 11.1  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 16 && jk === "Perempuan" && berat_badan > 11.1){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 16 && jk === "Perempuan" && berat_badan < 7.7 && berat_badan >= 6.9){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 16 && jk === "Perempuan" && berat_badan < 6.9){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 17 && jk === "Perempuan" && berat_badan >= 7.9 && berat_badan <= 11.4  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 17 && jk === "Perempuan" && berat_badan > 11.4){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 17 && jk === "Perempuan" && berat_badan < 7.9 && berat_badan >= 7){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 17 && jk === "Perempuan" && berat_badan < 7){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 18 && jk === "Perempuan" && berat_badan >= 8.1 && berat_badan <= 11.6  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 18 && jk === "Perempuan" && berat_badan > 11.6){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 18 && jk === "Perempuan" && berat_badan < 8.1 && berat_badan >= 7.2){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 18 && jk === "Perempuan" && berat_badan < 7.2){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 19 && jk === "Perempuan" && berat_badan >= 8.2 && berat_badan <= 11.8  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 19 && jk === "Perempuan" && berat_badan > 11.8){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 19 && jk === "Perempuan" && berat_badan < 8.2 && berat_badan >= 7.3){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 19 && jk === "Perempuan" && berat_badan < 7.3){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 20 && jk === "Perempuan" && berat_badan >= 8.4 && berat_badan <= 12.1  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 20 && jk === "Perempuan" && berat_badan > 12.1){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 20 && jk === "Perempuan" && berat_badan < 8.4 && berat_badan >= 7.5){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 20 && jk === "Perempuan" && berat_badan < 7.5){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 21 && jk === "Perempuan" && berat_badan >= 8.6 && berat_badan <= 12.3  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 21 && jk === "Perempuan" && berat_badan > 12.3){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 21 && jk === "Perempuan" && berat_badan < 8.6 && berat_badan >= 7.6){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 21 && jk === "Perempuan" && berat_badan < 7.6){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 22 && jk === "Perempuan" && berat_badan >= 8.7 && berat_badan <= 12.5  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 22 && jk === "Perempuan" && berat_badan > 12.5){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 22 && jk === "Perempuan" && berat_badan < 8.7 && berat_badan >= 7.8){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 22 && jk === "Perempuan" && berat_badan < 7.8){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 23 && jk === "Perempuan" && berat_badan >= 8.9 && berat_badan <= 12.8  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 23 && jk === "Perempuan" && berat_badan > 12.8){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 23 && jk === "Perempuan" && berat_badan < 8.9 && berat_badan >= 7.9){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 23 && jk === "Perempuan" && berat_badan < 7.9){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 24 && jk === "Perempuan" && berat_badan >= 9 && berat_badan <= 13  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 24 && jk === "Perempuan" && berat_badan > 13){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 24 && jk === "Perempuan" && berat_badan < 9 && berat_badan >= 8.1){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 24 && jk === "Perempuan" && berat_badan < 8.1){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 25 && jk === "Perempuan" && berat_badan >= 9.2 && berat_badan <= 13.3  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 25 && jk === "Perempuan" && berat_badan > 13.3){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 25 && jk === "Perempuan" && berat_badan < 9.2 && berat_badan >= 8.2){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 25 && jk === "Perempuan" && berat_badan < 8.2){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 26 && jk === "Perempuan" && berat_badan >= 9.4 && berat_badan <= 13.5  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 26 && jk === "Perempuan" && berat_badan > 13.5){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 26 && jk === "Perempuan" && berat_badan < 9.4 && berat_badan >= 8.4){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 26 && jk === "Perempuan" && berat_badan < 8.4){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 27 && jk === "Perempuan" && berat_badan >= 9.5 && berat_badan <= 13.7  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 27 && jk === "Perempuan" && berat_badan > 13.7){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 27 && jk === "Perempuan" && berat_badan < 9.5 && berat_badan >= 8.5){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 27 && jk === "Perempuan" && berat_badan < 8.5){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 28 && jk === "Perempuan" && berat_badan >= 9.7 && berat_badan <= 14  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 28 && jk === "Perempuan" && berat_badan > 14){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 28 && jk === "Perempuan" && berat_badan < 9.7 && berat_badan >= 8.6){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 28 && jk === "Perempuan" && berat_badan < 8.6){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 29 && jk === "Perempuan" && berat_badan >= 9.8 && berat_badan <= 14.2  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 29 && jk === "Perempuan" && berat_badan > 14.2){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 29 && jk === "Perempuan" && berat_badan < 9.8 && berat_badan >= 8.8){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 29 && jk === "Perempuan" && berat_badan < 8.8){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 30 && jk === "Perempuan" && berat_badan >= 10 && berat_badan <= 14.4  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 30 && jk === "Perempuan" && berat_badan > 14.4){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 30 && jk === "Perempuan" && berat_badan < 10 && berat_badan >= 8.9){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 30 && jk === "Perempuan" && berat_badan < 8.9){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 31 && jk === "Perempuan" && berat_badan >= 10.1 && berat_badan <= 14.7  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 31 && jk === "Perempuan" && berat_badan > 14.7){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 31 && jk === "Perempuan" && berat_badan < 10.1 && berat_badan >= 9){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 31 && jk === "Perempuan" && berat_badan < 9){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 32 && jk === "Perempuan" && berat_badan >= 10.3 && berat_badan <= 14.9  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 32 && jk === "Perempuan" && berat_badan > 14.9){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 32 && jk === "Perempuan" && berat_badan < 10.3 && berat_badan >= 9.1){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 32 && jk === "Perempuan" && berat_badan < 9.1){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 33 && jk === "Perempuan" && berat_badan >= 10.4 && berat_badan <= 15.1  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 33 && jk === "Perempuan" && berat_badan > 15.1){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 33 && jk === "Perempuan" && berat_badan < 10.4 && berat_badan >= 9.3){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 33 && jk === "Perempuan" && berat_badan < 9.3){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 34 && jk === "Perempuan" && berat_badan >= 10.5 && berat_badan <= 15.4  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 34 && jk === "Perempuan" && berat_badan > 15.4){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 34 && jk === "Perempuan" && berat_badan < 10.5 && berat_badan >= 9.4){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 34 && jk === "Perempuan" && berat_badan < 9.4){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 35 && jk === "Perempuan" && berat_badan >= 10.7 && berat_badan <= 15.6  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 35 && jk === "Perempuan" && berat_badan > 15.6){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 35 && jk === "Perempuan" && berat_badan < 10.7 && berat_badan >= 9.5){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 35 && jk === "Perempuan" && berat_badan < 9.5){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 36 && jk === "Perempuan" && berat_badan >= 10.8 && berat_badan <= 15.8  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 36 && jk === "Perempuan" && berat_badan > 15.8){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 36 && jk === "Perempuan" && berat_badan < 10.8 && berat_badan >= 9.6){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 36 && jk === "Perempuan" && berat_badan < 9.6){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 37 && jk === "Perempuan" && berat_badan >= 10.9 && berat_badan <= 16  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 37 && jk === "Perempuan" && berat_badan > 16){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 37 && jk === "Perempuan" && berat_badan < 10.9 && berat_badan >= 9.7){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 37 && jk === "Perempuan" && berat_badan < 9.7){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 38 && jk === "Perempuan" && berat_badan >= 11.1 && berat_badan <= 16.3  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 38 && jk === "Perempuan" && berat_badan > 16.3){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 38 && jk === "Perempuan" && berat_badan < 11.1 && berat_badan >= 9.8){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 38 && jk === "Perempuan" && berat_badan < 9.8){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 39 && jk === "Perempuan" && berat_badan >= 11.2 && berat_badan <= 16.5  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 39 && jk === "Perempuan" && berat_badan > 16.5){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 39 && jk === "Perempuan" && berat_badan < 11.2 && berat_badan >= 9.9){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 39 && jk === "Perempuan" && berat_badan < 9.9){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 40 && jk === "Perempuan" && berat_badan >= 11.3 && berat_badan <= 16.7  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 40 && jk === "Perempuan" && berat_badan > 16.7){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 40 && jk === "Perempuan" && berat_badan < 11.3 && berat_badan >= 10.1){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 40 && jk === "Perempuan" && berat_badan < 10.1){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 41 && jk === "Perempuan" && berat_badan >= 11.5 && berat_badan <= 16.9  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 41 && jk === "Perempuan" && berat_badan > 16.9){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 41 && jk === "Perempuan" && berat_badan < 11.5 && berat_badan >= 10.2){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 41 && jk === "Perempuan" && berat_badan < 10.2){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 42 && jk === "Perempuan" && berat_badan >= 11.6 && berat_badan <= 17.2  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 42 && jk === "Perempuan" && berat_badan > 17.2){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 42 && jk === "Perempuan" && berat_badan < 11.6 && berat_badan >= 10.3){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 42 && jk === "Perempuan" && berat_badan < 10.3){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 43 && jk === "Perempuan" && berat_badan >= 11.7 && berat_badan <= 17.4  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 43 && jk === "Perempuan" && berat_badan > 17.4){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 43 && jk === "Perempuan" && berat_badan < 11.7 && berat_badan >= 10.4){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 43 && jk === "Perempuan" && berat_badan < 10.4){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 44 && jk === "Perempuan" && berat_badan >= 11.8 && berat_badan <= 17.6  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 44 && jk === "Perempuan" && berat_badan > 17.6){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 44 && jk === "Perempuan" && berat_badan < 11.8 && berat_badan >= 10.5){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 44 && jk === "Perempuan" && berat_badan < 10.5){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 45 && jk === "Perempuan" && berat_badan >= 12 && berat_badan <= 17.8  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 45 && jk === "Perempuan" && berat_badan > 17.8){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 45 && jk === "Perempuan" && berat_badan < 12 && berat_badan >= 10.6){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 45 && jk === "Perempuan" && berat_badan < 10.6){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 46 && jk === "Perempuan" && berat_badan >= 12.1 && berat_badan <= 18.1  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 46 && jk === "Perempuan" && berat_badan > 18.1){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 46 && jk === "Perempuan" && berat_badan < 12.1 && berat_badan >= 10.7){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 46 && jk === "Perempuan" && berat_badan < 10.7){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 47 && jk === "Perempuan" && berat_badan >= 12.2 && berat_badan <= 18.3  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 47 && jk === "Perempuan" && berat_badan > 18.3){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 47 && jk === "Perempuan" && berat_badan < 12.2 && berat_badan >= 10.8){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 47 && jk === "Perempuan" && berat_badan < 10.8){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 48 && jk === "Perempuan" && berat_badan >= 12.3 && berat_badan <= 18.5  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 48 && jk === "Perempuan" && berat_badan > 18.5){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 48 && jk === "Perempuan" && berat_badan < 12.3 && berat_badan >= 10.9){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 48 && jk === "Perempuan" && berat_badan < 10.9){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 49 && jk === "Perempuan" && berat_badan >= 12.4 && berat_badan <= 18.8  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 49 && jk === "Perempuan" && berat_badan > 18.8){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 49 && jk === "Perempuan" && berat_badan < 12.4 && berat_badan >= 11){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 49 && jk === "Perempuan" && berat_badan < 11){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 51 && jk === "Perempuan" && berat_badan >= 12.6 && berat_badan <= 19  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 51 && jk === "Perempuan" && berat_badan > 19){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 51 && jk === "Perempuan" && berat_badan < 12.6 && berat_badan >= 11.1){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 51 && jk === "Perempuan" && berat_badan < 11.1){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 52 && jk === "Perempuan" && berat_badan >= 12.7 && berat_badan <= 19.2  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 52 && jk === "Perempuan" && berat_badan > 19.2){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 52 && jk === "Perempuan" && berat_badan < 12.7 && berat_badan >= 11.2){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 52 && jk === "Perempuan" && berat_badan < 11.2){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 53 && jk === "Perempuan" && berat_badan >= 12.8 && berat_badan <= 19.4  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 53 && jk === "Perempuan" && berat_badan > 19.4){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 53 && jk === "Perempuan" && berat_badan < 12.8 && berat_badan >= 11.3){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 53 && jk === "Perempuan" && berat_badan < 11.3){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 54 && jk === "Perempuan" && berat_badan >= 12.9 && berat_badan <= 19.7  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 54 && jk === "Perempuan" && berat_badan > 19.7){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 54 && jk === "Perempuan" && berat_badan < 12.9 && berat_badan >= 11.4){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 54 && jk === "Perempuan" && berat_badan < 11.4){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 55 && jk === "Perempuan" && berat_badan >= 13 && berat_badan <= 19.9  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 55 && jk === "Perempuan" && berat_badan > 19.9){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 55 && jk === "Perempuan" && berat_badan < 13 && berat_badan >= 11.5){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 55 && jk === "Perempuan" && berat_badan < 11.5){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 56 && jk === "Perempuan" && berat_badan >= 13.2 && berat_badan <= 20.1  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 56 && jk === "Perempuan" && berat_badan > 20.1){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 56 && jk === "Perempuan" && berat_badan < 13.2 && berat_badan >= 11.6){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 56 && jk === "Perempuan" && berat_badan < 11.6){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 57 && jk === "Perempuan" && berat_badan >= 13.3 && berat_badan <= 20.3  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 57 && jk === "Perempuan" && berat_badan > 20.3){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 57 && jk === "Perempuan" && berat_badan < 13.3 && berat_badan >= 11.7){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 57 && jk === "Perempuan" && berat_badan < 11.7){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 58 && jk === "Perempuan" && berat_badan >= 13.4 && berat_badan <= 20.6  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 58 && jk === "Perempuan" && berat_badan > 20.6){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 58 && jk === "Perempuan" && berat_badan < 13.4 && berat_badan >= 11.8){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 58 && jk === "Perempuan" && berat_badan < 11.8){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 59 && jk === "Perempuan" && berat_badan >= 13.5 && berat_badan <= 20.8  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 59 && jk === "Perempuan" && berat_badan > 20.8){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 59 && jk === "Perempuan" && berat_badan < 13.5 && berat_badan >= 11.9){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 59 && jk === "Perempuan" && berat_badan < 11.9){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+if (totalBulan == 60 && jk === "Perempuan" && berat_badan >= 13.6 && berat_badan <= 21  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; }  else if (totalBulan == 60 && jk === "Perempuan" && berat_badan > 21){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 60 && jk === "Perempuan" && berat_badan < 13.6 && berat_badan >= 12){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 60 && jk === "Perempuan" && berat_badan < 12){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
+
+
+//PANJANG BADAN Perempuan
+
+
+if (totalBulan == 0 && jk === "Perempuan" && tinggi_badan >= 45.4 && tinggi_badan <= 54.7  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 0 && jk === "Perempuan" && tinggi_badan > 54.7){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 0 && jk === "Perempuan" && tinggi_badan < 45.4 && tinggi_badan >= 43.6){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 0 && jk === "Perempuan" && tinggi_badan < 43.6){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 1 && jk === "Perempuan" && tinggi_badan >= 49.8 && tinggi_badan <= 59.5  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 1 && jk === "Perempuan" && tinggi_badan > 59.5){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 1 && jk === "Perempuan" && tinggi_badan < 49.8 && tinggi_badan >= 47.8){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 1 && jk === "Perempuan" && tinggi_badan < 47.8){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 2 && jk === "Perempuan" && tinggi_badan >= 53 && tinggi_badan <= 63.2  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 2 && jk === "Perempuan" && tinggi_badan > 63.2){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 2 && jk === "Perempuan" && tinggi_badan < 53 && tinggi_badan >= 51){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 2 && jk === "Perempuan" && tinggi_badan < 51){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 3 && jk === "Perempuan" && tinggi_badan >= 66.1 && tinggi_badan <= 66.1  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 3 && jk === "Perempuan" && tinggi_badan > 66.1){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 3 && jk === "Perempuan" && tinggi_badan < 66.1 && tinggi_badan >= 53.5){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 3 && jk === "Perempuan" && tinggi_badan < 53.5){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 4 && jk === "Perempuan" && tinggi_badan >= 57.8 && tinggi_badan <= 68.6  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 4 && jk === "Perempuan" && tinggi_badan > 68.6){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 4 && jk === "Perempuan" && tinggi_badan < 57.8 && tinggi_badan >= 55.6){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 4 && jk === "Perempuan" && tinggi_badan < 55.6){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 5 && jk === "Perempuan" && tinggi_badan >= 59.6 && tinggi_badan <= 70.7  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 5 && jk === "Perempuan" && tinggi_badan > 70.7){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 5 && jk === "Perempuan" && tinggi_badan < 59.6 && tinggi_badan >= 57.4){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 5 && jk === "Perempuan" && tinggi_badan < 57.4){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 6 && jk === "Perempuan" && tinggi_badan >= 61.2 && tinggi_badan <= 72.5  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 6 && jk === "Perempuan" && tinggi_badan > 72.5){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 6 && jk === "Perempuan" && tinggi_badan < 61.2 && tinggi_badan >= 58.9){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 6 && jk === "Perempuan" && tinggi_badan < 58.9){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 7 && jk === "Perempuan" && tinggi_badan >= 62.7 && tinggi_badan <= 74.2  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 7 && jk === "Perempuan" && tinggi_badan > 74.2){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 7 && jk === "Perempuan" && tinggi_badan < 62.7 && tinggi_badan >= 60.3){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 7 && jk === "Perempuan" && tinggi_badan < 60.3){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 8 && jk === "Perempuan" && tinggi_badan >= 64 && tinggi_badan <= 75.8  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 8 && jk === "Perempuan" && tinggi_badan > 75.8){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 8 && jk === "Perempuan" && tinggi_badan < 64 && tinggi_badan >= 61.7){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 8 && jk === "Perempuan" && tinggi_badan < 61.7){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 9 && jk === "Perempuan" && tinggi_badan >= 65.3 && tinggi_badan <= 77.4  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 9 && jk === "Perempuan" && tinggi_badan > 77.4){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 9 && jk === "Perempuan" && tinggi_badan < 65.3 && tinggi_badan >= 62.9){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 9 && jk === "Perempuan" && tinggi_badan < 62.9){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 10 && jk === "Perempuan" && tinggi_badan >= 66.5 && tinggi_badan <= 78.9  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 10 && jk === "Perempuan" && tinggi_badan > 78.9){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 10 && jk === "Perempuan" && tinggi_badan < 66.5 && tinggi_badan >= 64.1){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 10 && jk === "Perempuan" && tinggi_badan < 64.1){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 11 && jk === "Perempuan" && tinggi_badan >= 67.7 && tinggi_badan <= 80.3  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 11 && jk === "Perempuan" && tinggi_badan > 80.3){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 11 && jk === "Perempuan" && tinggi_badan < 67.7 && tinggi_badan >= 65.2){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 11 && jk === "Perempuan" && tinggi_badan < 65.2){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 12 && jk === "Perempuan" && tinggi_badan >= 68.9 && tinggi_badan <= 81.7  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 12 && jk === "Perempuan" && tinggi_badan > 81.7){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 12 && jk === "Perempuan" && tinggi_badan < 68.9 && tinggi_badan >= 66.3){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 12 && jk === "Perempuan" && tinggi_badan < 66.3){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 13 && jk === "Perempuan" && tinggi_badan >= 70 && tinggi_badan <= 83.1  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 13 && jk === "Perempuan" && tinggi_badan > 83.1){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 13 && jk === "Perempuan" && tinggi_badan < 70 && tinggi_badan >= 67.3){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 13 && jk === "Perempuan" && tinggi_badan < 67.3){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 14 && jk === "Perempuan" && tinggi_badan >= 71 && tinggi_badan <= 84.4  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 14 && jk === "Perempuan" && tinggi_badan > 84.4){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 14 && jk === "Perempuan" && tinggi_badan < 71 && tinggi_badan >= 68.3){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 14 && jk === "Perempuan" && tinggi_badan < 68.3){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 15 && jk === "Perempuan" && tinggi_badan >= 72 && tinggi_badan <= 85.7  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 15 && jk === "Perempuan" && tinggi_badan > 85.7){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 15 && jk === "Perempuan" && tinggi_badan < 72 && tinggi_badan >= 69.3){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 15 && jk === "Perempuan" && tinggi_badan < 69.3){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 16 && jk === "Perempuan" && tinggi_badan >= 73 && tinggi_badan <= 87  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 16 && jk === "Perempuan" && tinggi_badan > 87){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 16 && jk === "Perempuan" && tinggi_badan < 73 && tinggi_badan >= 70.2){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 16 && jk === "Perempuan" && tinggi_badan < 70.2){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 17 && jk === "Perempuan" && tinggi_badan >= 74 && tinggi_badan <= 88.2  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 17 && jk === "Perempuan" && tinggi_badan > 88.2){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 17 && jk === "Perempuan" && tinggi_badan < 74 && tinggi_badan >= 71.1){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 17 && jk === "Perempuan" && tinggi_badan < 71.1){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 18 && jk === "Perempuan" && tinggi_badan >= 74.9 && tinggi_badan <= 89.4  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 18 && jk === "Perempuan" && tinggi_badan > 89.4){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 18 && jk === "Perempuan" && tinggi_badan < 74.9 && tinggi_badan >= 72){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 18 && jk === "Perempuan" && tinggi_badan < 72){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 19 && jk === "Perempuan" && tinggi_badan >= 75.8 && tinggi_badan <= 90.6  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 19 && jk === "Perempuan" && tinggi_badan > 90.6){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 19 && jk === "Perempuan" && tinggi_badan < 75.8 && tinggi_badan >= 72.8){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 19 && jk === "Perempuan" && tinggi_badan < 72.8){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 20 && jk === "Perempuan" && tinggi_badan >= 76.7 && tinggi_badan <= 91.7  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 20 && jk === "Perempuan" && tinggi_badan > 91.7){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 20 && jk === "Perempuan" && tinggi_badan < 76.7 && tinggi_badan >= 73.7){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 20 && jk === "Perempuan" && tinggi_badan < 73.7){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 21 && jk === "Perempuan" && tinggi_badan >= 77.5 && tinggi_badan <= 92.9  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 21 && jk === "Perempuan" && tinggi_badan > 92.9){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 21 && jk === "Perempuan" && tinggi_badan < 77.5 && tinggi_badan >= 74.5){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 21 && jk === "Perempuan" && tinggi_badan < 74.5){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 22 && jk === "Perempuan" && tinggi_badan >= 78.4 && tinggi_badan <= 94  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 22 && jk === "Perempuan" && tinggi_badan > 94){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 22 && jk === "Perempuan" && tinggi_badan < 78.4 && tinggi_badan >= 75.2){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 22 && jk === "Perempuan" && tinggi_badan < 75.2){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 23 && jk === "Perempuan" && tinggi_badan >= 79.2 && tinggi_badan <= 95  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 23 && jk === "Perempuan" && tinggi_badan > 95){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 23 && jk === "Perempuan" && tinggi_badan < 79.2 && tinggi_badan >= 76){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 23 && jk === "Perempuan" && tinggi_badan < 76){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 24 && jk === "Perempuan" && tinggi_badan >= 80 && tinggi_badan <= 96.1  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 24 && jk === "Perempuan" && tinggi_badan > 96.1){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 24 && jk === "Perempuan" && tinggi_badan < 80 && tinggi_badan >= 76.7){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 24 && jk === "Perempuan" && tinggi_badan < 76.7){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 25 && jk === "Perempuan" && tinggi_badan >= 80 && tinggi_badan <= 96.4  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 25 && jk === "Perempuan" && tinggi_badan > 96.4){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 25 && jk === "Perempuan" && tinggi_badan < 80 && tinggi_badan >= 76.8){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 25 && jk === "Perempuan" && tinggi_badan < 76.8){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 26 && jk === "Perempuan" && tinggi_badan >= 80.8 && tinggi_badan <= 97.4  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 26 && jk === "Perempuan" && tinggi_badan > 97.4){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 26 && jk === "Perempuan" && tinggi_badan < 80.8 && tinggi_badan >= 77.5){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 26 && jk === "Perempuan" && tinggi_badan < 77.5){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 27 && jk === "Perempuan" && tinggi_badan >= 81.5 && tinggi_badan <= 98.4  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 27 && jk === "Perempuan" && tinggi_badan > 98.4){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 27 && jk === "Perempuan" && tinggi_badan < 81.5 && tinggi_badan >= 78.1){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 27 && jk === "Perempuan" && tinggi_badan < 78.1){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 28 && jk === "Perempuan" && tinggi_badan >= 82.2 && tinggi_badan <= 99.4  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 28 && jk === "Perempuan" && tinggi_badan > 99.4){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 28 && jk === "Perempuan" && tinggi_badan < 82.2 && tinggi_badan >= 78.8){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 28 && jk === "Perempuan" && tinggi_badan < 78.8){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 29 && jk === "Perempuan" && tinggi_badan >= 82.9 && tinggi_badan <= 100.3  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 29 && jk === "Perempuan" && tinggi_badan > 100.3){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 29 && jk === "Perempuan" && tinggi_badan < 82.9 && tinggi_badan >= 79.5){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 29 && jk === "Perempuan" && tinggi_badan < 79.5){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 30 && jk === "Perempuan" && tinggi_badan >= 83.6 && tinggi_badan <= 101.3  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 30 && jk === "Perempuan" && tinggi_badan > 101.3){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 30 && jk === "Perempuan" && tinggi_badan < 83.6 && tinggi_badan >= 80.1){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 30 && jk === "Perempuan" && tinggi_badan < 80.1){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 31 && jk === "Perempuan" && tinggi_badan >= 84.3 && tinggi_badan <= 102.2  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 31 && jk === "Perempuan" && tinggi_badan > 102.2){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 31 && jk === "Perempuan" && tinggi_badan < 84.3 && tinggi_badan >= 80.7){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 31 && jk === "Perempuan" && tinggi_badan < 80.7){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 32 && jk === "Perempuan" && tinggi_badan >= 84.9 && tinggi_badan <= 103.1  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 32 && jk === "Perempuan" && tinggi_badan > 103.1){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 32 && jk === "Perempuan" && tinggi_badan < 84.9 && tinggi_badan >= 81.3){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 32 && jk === "Perempuan" && tinggi_badan < 81.3){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 33 && jk === "Perempuan" && tinggi_badan >= 85.6 && tinggi_badan <= 103.9  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 33 && jk === "Perempuan" && tinggi_badan > 103.9){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 33 && jk === "Perempuan" && tinggi_badan < 85.6 && tinggi_badan >= 81.9){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 33 && jk === "Perempuan" && tinggi_badan < 81.9){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 34 && jk === "Perempuan" && tinggi_badan >= 86.2 && tinggi_badan <= 104.8  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 34 && jk === "Perempuan" && tinggi_badan > 104.8){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 34 && jk === "Perempuan" && tinggi_badan < 86.2 && tinggi_badan >= 82.5){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 34 && jk === "Perempuan" && tinggi_badan < 82.5){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 35 && jk === "Perempuan" && tinggi_badan >= 86.8 && tinggi_badan <= 105.6  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 35 && jk === "Perempuan" && tinggi_badan > 105.6){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 35 && jk === "Perempuan" && tinggi_badan < 86.8 && tinggi_badan >= 83.1){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 35 && jk === "Perempuan" && tinggi_badan < 83.1){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 36 && jk === "Perempuan" && tinggi_badan >= 87.4 && tinggi_badan <= 106.5  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 36 && jk === "Perempuan" && tinggi_badan > 106.5){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 36 && jk === "Perempuan" && tinggi_badan < 87.4 && tinggi_badan >= 83.6){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 36 && jk === "Perempuan" && tinggi_badan < 83.6){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 37 && jk === "Perempuan" && tinggi_badan >= 88 && tinggi_badan <= 107.3  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 37 && jk === "Perempuan" && tinggi_badan > 107.3){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 37 && jk === "Perempuan" && tinggi_badan < 88 && tinggi_badan >= 84.2){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 37 && jk === "Perempuan" && tinggi_badan < 84.2){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 38 && jk === "Perempuan" && tinggi_badan >= 88.6 && tinggi_badan <= 108.1  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 38 && jk === "Perempuan" && tinggi_badan > 108.1){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 38 && jk === "Perempuan" && tinggi_badan < 88.6 && tinggi_badan >= 84.7){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 38 && jk === "Perempuan" && tinggi_badan < 84.7){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 39 && jk === "Perempuan" && tinggi_badan >= 89.2 && tinggi_badan <= 108.9  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 39 && jk === "Perempuan" && tinggi_badan > 108.9){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 39 && jk === "Perempuan" && tinggi_badan < 89.2 && tinggi_badan >= 85.3){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 39 && jk === "Perempuan" && tinggi_badan < 85.3){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 40 && jk === "Perempuan" && tinggi_badan >= 89.8 && tinggi_badan <= 109.7  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 40 && jk === "Perempuan" && tinggi_badan > 109.7){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 40 && jk === "Perempuan" && tinggi_badan < 89.8 && tinggi_badan >= 85.8){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 40 && jk === "Perempuan" && tinggi_badan < 85.8){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 41 && jk === "Perempuan" && tinggi_badan >= 90.4 && tinggi_badan <= 110.5  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 41 && jk === "Perempuan" && tinggi_badan > 110.5){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 41 && jk === "Perempuan" && tinggi_badan < 90.4 && tinggi_badan >= 86.3){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 41 && jk === "Perempuan" && tinggi_badan < 86.3){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 42 && jk === "Perempuan" && tinggi_badan >= 90.9 && tinggi_badan <= 111.2  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 42 && jk === "Perempuan" && tinggi_badan > 111.2){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 42 && jk === "Perempuan" && tinggi_badan < 90.9 && tinggi_badan >= 86.8){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 42 && jk === "Perempuan" && tinggi_badan < 86.8){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 43 && jk === "Perempuan" && tinggi_badan >= 91.5 && tinggi_badan <= 112  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 43 && jk === "Perempuan" && tinggi_badan > 112){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 43 && jk === "Perempuan" && tinggi_badan < 91.5 && tinggi_badan >= 87.4){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 43 && jk === "Perempuan" && tinggi_badan < 87.4){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 44 && jk === "Perempuan" && tinggi_badan >= 92 && tinggi_badan <= 112.7  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 44 && jk === "Perempuan" && tinggi_badan > 112.7){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 44 && jk === "Perempuan" && tinggi_badan < 92 && tinggi_badan >= 87.9){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 44 && jk === "Perempuan" && tinggi_badan < 87.9){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 45 && jk === "Perempuan" && tinggi_badan >= 92.5 && tinggi_badan <= 113.5  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 45 && jk === "Perempuan" && tinggi_badan > 113.5){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 45 && jk === "Perempuan" && tinggi_badan < 92.5 && tinggi_badan >= 88.4){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 45 && jk === "Perempuan" && tinggi_badan < 88.4){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 46 && jk === "Perempuan" && tinggi_badan >= 93.1 && tinggi_badan <= 114.2  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 46 && jk === "Perempuan" && tinggi_badan > 114.2){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 46 && jk === "Perempuan" && tinggi_badan < 93.1 && tinggi_badan >= 88.9){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 46 && jk === "Perempuan" && tinggi_badan < 88.9){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 47 && jk === "Perempuan" && tinggi_badan >= 93.6 && tinggi_badan <= 114.9  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 47 && jk === "Perempuan" && tinggi_badan > 114.9){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 47 && jk === "Perempuan" && tinggi_badan < 93.6 && tinggi_badan >= 89.3){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 47 && jk === "Perempuan" && tinggi_badan < 89.3){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 48 && jk === "Perempuan" && tinggi_badan >= 94.1 && tinggi_badan <= 115.7  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 48 && jk === "Perempuan" && tinggi_badan > 115.7){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 48 && jk === "Perempuan" && tinggi_badan < 94.1 && tinggi_badan >= 89.8){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 48 && jk === "Perempuan" && tinggi_badan < 89.8){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 49 && jk === "Perempuan" && tinggi_badan >= 94.6 && tinggi_badan <= 116.4  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 49 && jk === "Perempuan" && tinggi_badan > 116.4){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 49 && jk === "Perempuan" && tinggi_badan < 94.6 && tinggi_badan >= 90.3){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 49 && jk === "Perempuan" && tinggi_badan < 90.3){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 51 && jk === "Perempuan" && tinggi_badan >= 95.1 && tinggi_badan <= 117.1  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 51 && jk === "Perempuan" && tinggi_badan > 117.1){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 51 && jk === "Perempuan" && tinggi_badan < 95.1 && tinggi_badan >= 90.7){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 51 && jk === "Perempuan" && tinggi_badan < 90.7){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 52 && jk === "Perempuan" && tinggi_badan >= 95.6 && tinggi_badan <= 117.7  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 52 && jk === "Perempuan" && tinggi_badan > 117.7){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 52 && jk === "Perempuan" && tinggi_badan < 95.6 && tinggi_badan >= 91.2){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 52 && jk === "Perempuan" && tinggi_badan < 91.2){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 53 && jk === "Perempuan" && tinggi_badan >= 96.1 && tinggi_badan <= 118.4  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 53 && jk === "Perempuan" && tinggi_badan > 118.4){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 53 && jk === "Perempuan" && tinggi_badan < 96.1 && tinggi_badan >= 91.7){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 53 && jk === "Perempuan" && tinggi_badan < 91.7){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 54 && jk === "Perempuan" && tinggi_badan >= 96.6 && tinggi_badan <= 119.1  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 54 && jk === "Perempuan" && tinggi_badan > 119.1){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 54 && jk === "Perempuan" && tinggi_badan < 96.6 && tinggi_badan >= 92.1){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 54 && jk === "Perempuan" && tinggi_badan < 92.1){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 55 && jk === "Perempuan" && tinggi_badan >= 97.1 && tinggi_badan <= 119.8  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 55 && jk === "Perempuan" && tinggi_badan > 119.8){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 55 && jk === "Perempuan" && tinggi_badan < 97.1 && tinggi_badan >= 92.6){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 55 && jk === "Perempuan" && tinggi_badan < 92.6){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 56 && jk === "Perempuan" && tinggi_badan >= 97.6 && tinggi_badan <= 120.4  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 56 && jk === "Perempuan" && tinggi_badan > 120.4){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 56 && jk === "Perempuan" && tinggi_badan < 97.6 && tinggi_badan >= 93){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 56 && jk === "Perempuan" && tinggi_badan < 93){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 57 && jk === "Perempuan" && tinggi_badan >= 98.1 && tinggi_badan <= 121.1  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 57 && jk === "Perempuan" && tinggi_badan > 121.1){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 57 && jk === "Perempuan" && tinggi_badan < 98.1 && tinggi_badan >= 93.4){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 57 && jk === "Perempuan" && tinggi_badan < 93.4){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 58 && jk === "Perempuan" && tinggi_badan >= 98.5 && tinggi_badan <= 121.8  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 58 && jk === "Perempuan" && tinggi_badan > 121.8){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 58 && jk === "Perempuan" && tinggi_badan < 98.5 && tinggi_badan >= 93.9){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 58 && jk === "Perempuan" && tinggi_badan < 93.9){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 59 && jk === "Perempuan" && tinggi_badan >= 99 && tinggi_badan <= 122.4  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 59 && jk === "Perempuan" && tinggi_badan > 122.4){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 59 && jk === "Perempuan" && tinggi_badan < 99 && tinggi_badan >= 94.3){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 59 && jk === "Perempuan" && tinggi_badan < 94.3){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+if (totalBulan == 60 && jk === "Perempuan" && tinggi_badan >= 99.5 && tinggi_badan <= 123.1  ){ document.getElementById('normal_b').innerHTML = "(Normal)"; }  else if (totalBulan == 60 && jk === "Perempuan" && tinggi_badan > 123.1){ document.getElementById('normal_b').innerHTML = "(Tinggi)"; } else if (totalBulan == 60 && jk === "Perempuan" && tinggi_badan < 99.5 && tinggi_badan >= 94.7){ document.getElementById('normal_b').innerHTML = "(Pendek)"; } else if (totalBulan == 60 && jk === "Perempuan" && tinggi_badan < 94.7){ document.getElementById('normal_b').innerHTML = "(Sangat Pendek)"; }
+
+
+
+
+
+        }
+      </script>
+</body>
+</html>
