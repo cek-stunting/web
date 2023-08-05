@@ -104,17 +104,14 @@
                         <div class="col-6 border-input"><span id="hasil_berat_badan">- </span><span id="normal_a">(-)</span></div>
                     </div>
                     <div class="row">
-                        <div class="col-4">Berat Badan</div>
+                        <div class="col-4">Tinggi Badan</div>
                         <div class="col-6 border-input"><span id="hasil_tinggi_badan">- </span><span id="normal_b">(-)</span></div>
                     </div>
                 </div>
                 <div class="col-md-6 sub-hasil">
                     <h2>Anjuran Cakupan Gizi dan Nutrisi</h2>
                     <div class="row">
-                        <ul class=" mx-3 mx-md-auto list-gizi">
-                            <li>Item pertama</li>
-                            <li>Item kedua</li>
-                            <li>Item ketiga</li>
+                        <ul id="listGizi" class=" mx-3 mx-md-auto list-gizi">
                           </ul>
                     </div>
                 </div>
@@ -180,6 +177,18 @@
     document.getElementById('hasil_berat_badan').innerHTML = berat_badan + ' kg ';
     document.getElementById('hasil_tinggi_badan').innerHTML = tinggi_badan + ' cm ';
     
+  // LIST BARANG
+     let listGizi = document.getElementById("listGizi");
+
+        if (totalBulan >= 0 && totalBulan <= 6) {
+            listGizi.innerHTML = "<h3>Kebutuhan gizi pada bayi usia 0-6 bulan cukup terpenuhi dari ASI saja (ASI Eksklusif)</h3><li>Berikan ASI yang pertama keluar dan berwarna kekuningan (kolostrum)</li><li>Jangan beri makanan/minuman selain ASI</li><li>Susui bayi sesering mungkin</li><li>Susui setiap bayi menginginkan, paling sedikit 8 kali sehari</li><li>Jika bayi tidur lebih dari 3 jam, bangunkan lalu susui</li><li>Susui dengan payudara kanan dan kiri secara bergantian</li><li>Susui sampai payudara terasa kosong, lalu pindah ke payudara sisi lainnya</li>";
+        } else if (totalBulan >= 7 && totalBulan <= 12) {
+            listGizi.innerHTML = "<li>Anak harus mulai dikenalkan dan diberi makanan pendamping ASI sejak umur 6 bulan.</li><li>Makanan utama adalah makanan padat yang diberikan secara bertahap (bentuk, jumlah dan frekuensi)</li><li>ASI diberikan sampai anak usia 2 tahun.</li></br><h3>MP-ASI yang baik:</h3><li>Padat energi, protein dan zat gizi mikro (zat besi, Zinc, Kalsium, Vit. A, Vit. C dan Folat).</li><li>Tidak berbumbu tajam, tidak menggunakan gula, garam, penyedap rasa, pewarna dan pengawet.</li><li>Mudah ditelan dan disukai anak.</li><li>Tersedia lokal dan harga terjangkau.</li>";
+        } else if (totalBulan >= 13 && totalBulan <= 24) {
+            listGizi.innerHTML = "</br><h3>Bentuk Makanan :</h3><li>Makanan keluarga</li><li>Makanan yang dicincang atau dihaluskan jika diperlukan</li><li>ASI</li></br><h3>Berapa Kali Sehari :</h3><li>Makanan keluarga 3-4 kali sehari</li><li>Makanan selingan 1-2 kali sehari</li><li>Teruskan pemberian ASI</li></br><h3>Berapa Banyak Setiap Kali Makan :</h3><li>3/4 sampai dengan 1 mangkuk ukuran 250 ml</li><li>1 potong kecil ikan/ daging/ayam/telur</li><li>1 potong kecil tempe/tahu atau 1 sdm kacangkacangan </li><li>1/4 gelas sayur</li><li>1 potong buah</li><li>1/2 gelas bubur/ 1 potong kue/ 1 potong buah</li>";
+        } else if (totalBulan >= 25) {
+            listGizi.innerHTML ="<li>Lanjutkan beri makan makanan orang dewasa.</li><li>Tambahkan porsinya menjadi 1 piring.</li><li>Beri makanan selingan 2 kali sehari.</li><li>Jangan berikan makanan manis sebelum waktu makan, sebab bisa mengurangi nafsu makan.</li>";}
+
   // BERAT BADAN
 
 if (totalBulan == 0 && jk === "Laki-Laki" && berat_badan >= 2.5 && berat_badan <= 3.9  ){ document.getElementById('normal_a').innerHTML = "(Normal)"; } else if (totalBulan == 0 && jk === "Laki-Laki" && berat_badan < 2.5 && berat_badan >= 2.1){ document.getElementById('normal_a').innerHTML = "(Kurang)"; } else if (totalBulan == 0 && jk === "Laki-Laki" && berat_badan > 3.9){ document.getElementById('normal_a').innerHTML = "(Risiko Berat Badan Berlebih)"; } else if (totalBulan == 0 && jk === "Laki-Laki" && berat_badan < 2.1){ document.getElementById('normal_a').innerHTML = "(Sangat Kurang)"; }
@@ -914,6 +923,8 @@ if (totalBulan == 60 && jk === "Perempuan" && tinggi_badan >= 99.5 && tinggi_bad
 
 
         }
+
+        
       </script>
 </body>
 </html>
